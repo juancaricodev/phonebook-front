@@ -37,6 +37,9 @@
     "webpack-dev-server": "3.11.2"
   },
   "eslintConfig": {
+    "globals": {
+      "fetch": false
+    },
     "extends": [
       "./node_modules/standard/eslintrc.json"
     ]
