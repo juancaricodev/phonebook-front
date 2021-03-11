@@ -1,33 +1,27 @@
-const URL = 'http://localhost:5000/persons'
+import axios from 'axios'
+
+const URL = 'http://localhost:3001/api/persons'
 
 const getAll = () => {
-  const request = fetch.get(URL)
-  const data = request.then(res => res.json())
-
-  return data.then(res => res.data)
+  const request = axios.get(URL)
+  return request.then(res => res.data)
 }
 
 const create = (newObject) => {
-  const request = fetch.post(URL, newObject)
-  const data = request.then(res => res.json())
-
-  return data.then(res => res.data)
+  const request = axios.post(URL, newObject)
+  return request.then(res => res.data)
 }
 
 const updateNumber = (id, newObject) => {
   const url = `${URL}/${id}`
-  const request = fetch.put(url, newObject)
-  const data = request.then(res => res.json())
-
-  return data.then(res => res.data)
+  const request = axios.put(url, newObject)
+  return request.then(res => res.data)
 }
 
 const deleteId = (id, newObject) => {
   const url = `${URL}/${id}`
-  const request = fetch.put(url, newObject)
-  const data = request.then(res => res.json())
-
-  return data.then(res => res.data)
+  const request = axios.put(url, newObject)
+  return request.then(res => res.data)
 }
 
 export default { getAll, create, updateNumber, deleteId }

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import NewPeople from './components/NewPeople'
 import Numbers from './components/Numbers'
 import NumbersFiltered from './components/NumbersFiltered'
-import Searchbar from './components/Searchbar'
+import SearchBar from './components/SearchBar'
 import phonebookService from '@services/phonebook'
 
 import './styles.scss'
@@ -129,7 +129,7 @@ const Phonebook = () => {
     <div className='phonebook'>
       <h2>Phonebook</h2>
 
-      <Searchbar
+      <SearchBar
         submit={handleSearchSubmit}
         value={newSearch}
         change={handleNameSearch}
