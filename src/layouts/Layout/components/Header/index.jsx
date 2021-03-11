@@ -1,10 +1,15 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
+import './styles.scss'
+
 const Header = () => {
   return (
-    <div>
-      I'm a header!
-    </div>
+    <header className='header'>
+      <Link to='/'>Home</Link>
+      <Link to='/phonebook'>Phonebook</Link>
+    </header>
   )
 }
 
