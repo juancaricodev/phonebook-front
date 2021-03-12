@@ -9,7 +9,7 @@ const Numbers = ({ persons, deleteId }) => {
           !person.deleted && (
             <li key={person.name}>
               {person.name} {person.number ? `-  ${person.number}` : ''}
-              <button type='button' onClick={() => deleteId(person.id)}>Delete</button>
+              <button className='delete-btn' type='button' onClick={() => deleteId(person.id)}>Delete</button>
             </li>
           )
         ))}

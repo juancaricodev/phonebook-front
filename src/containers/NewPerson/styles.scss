@@ -1,0 +1,10 @@
+.new-person {
+  form {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+  }
+  .new-people-form {
+    flex-direction: column;
+  }
+}
