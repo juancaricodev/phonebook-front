@@ -10,7 +10,7 @@ import Layout from '@layouts/Layout'
 import Home from '@containers/Home'
 import Phonebook from '@containers/Phonebook'
 import NotFound from '@containers/NotFound'
-import NewPeople from '@containers/NewPeople'
+import NewPerson from '@containers/NewPerson'
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/phonebook' component={Phonebook} />
-          <Route exact path='/new-people' component={NewPeople} />
+          <Route exact path='/new-person' component={NewPerson} />
           <Route component={NotFound} />
         </Switch>
       </Layout>
