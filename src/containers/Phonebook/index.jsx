@@ -83,7 +83,7 @@ const Phonebook = () => {
   const handleDelete = (id) => {
     const person = persons.find(p => p.id === id)
 
-    window.confirm(`Delete id ${person.name}?`) && deletePerson(id, person)
+    window.confirm(`Delete ${person.name}?`) && deletePerson(id, person)
   }
 
   const handleNameChange = (e) => {
