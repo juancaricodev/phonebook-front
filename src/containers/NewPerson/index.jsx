@@ -25,7 +25,6 @@ const NewPerson = () => {
       .updateNumber(personId, updatedPerson)
       .then((updated) => {
         setPersons(persons.map(person => (person.id !== personId ? person : updated)))
-        // filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== personId ? person : updated)))
       })
       .catch(err => console.error(`Error updating person ${updatedPerson.name} with error => ${err}`))
   }
@@ -51,13 +50,11 @@ const NewPerson = () => {
         .create(newPerson)
         .then(newPerson => setPersons([...persons, newPerson]))
 
-      // setFilteredData([])
       console.log(newPerson)
     }
 
     setNewName('')
     setNewPhone('')
-    // setEmpty(false)
   }
 
   const handleNameChange = (e) => {
