@@ -44,13 +44,16 @@ const NewPerson = () => {
     if (newPerson.name === '' || newPerson.number === '') {
       window.alert('All fields should be filled')
     } else if (nameMatch) {
-      window.confirm(`${newPerson.name} is already added to phonebook, replace the old number with a new one?`) && updateNumber(nameMatch, newPerson.number)
+      window.confirm(`${newPerson.name} is already added to phonebook, replace the old number with a new one?`) && (
+        Promise.resolve(updateNumber(nameMatch, newPerson.number))
+          .then(window.alert(`${newPerson.name}'s number updated`))
+      )
     } else {
       phonebookService
         .create(newPerson)
         .then(newPerson => setPersons([...persons, newPerson]))
 
-      console.log(newPerson)
+      window.alert(`${newPerson.name} has been created`)
     }
 
     setNewName('')

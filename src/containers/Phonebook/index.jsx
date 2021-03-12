@@ -72,7 +72,7 @@ const Phonebook = () => {
 
   return (
     <div className='phonebook'>
-      <h2>Phonebook</h2>
+      <h1>Phonebook</h1>
 
       <SearchBar
         submit={handleSearchSubmit}
