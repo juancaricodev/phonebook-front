@@ -1,0 +1,41 @@
+.phonebook {
+  margin-top: 20px;
+
+  form {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+  }
+
+  .new-people-form {
+    flex-direction: column;
+  }
+
+  ul {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    li {
+      list-style: circle inside;
+    }
+  }
+
+  strong {
+    color: $color-red;
+  }
+
+  .searchbar-container {
+    margin-bottom: 20px;
+    form {
+      margin-bottom: 0;
+    }
+  }
+
+  .filtered-container {
+    button {
+      width: fit-content;
+    }
+  }
+}

@@ -16,8 +16,10 @@
   "author": "Juan Camilo Rico <juancaricodev@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "0.21.1",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-router-dom": "5.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.13.10",
@@ -36,6 +38,9 @@
     "webpack-dev-server": "3.11.2"
   },
   "eslintConfig": {
+    "globals": {
+      "fetch": false
+    },
     "extends": [
       "./node_modules/standard/eslintrc.json"
     ]
