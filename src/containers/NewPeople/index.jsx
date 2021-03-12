@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import phonebookService from '@services/phonebook'
 
+import './styles.scss'
+
 const NewPeople = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
@@ -67,7 +69,7 @@ const NewPeople = () => {
   }
 
   return (
-    <>
+    <div className='new-person'>
       <h1>Add New Person</h1>
 
       <form className='new-people-form' onSubmit={handleSubmit}>
@@ -93,7 +95,7 @@ const NewPeople = () => {
           <button type='submit'>Add</button>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 
