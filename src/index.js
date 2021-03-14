@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import FetchContext from './context/FetchContext'
+import Context from './context/Context'
 
 import App from './routes/App'
 
 ReactDOM.render(
-  <FetchContext>
+  <Context.Provider>
     <App />
-  </FetchContext>,
+  </Context.Provider>,
   document.getElementById('root')
 )

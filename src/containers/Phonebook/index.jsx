@@ -1,36 +1,44 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import Numbers from './components/Numbers'
 import NumbersFiltered from './components/NumbersFiltered'
 import SearchBar from './components/SearchBar'
 import phonebookService from '@services/phonebook'
 
+import Context from '@context/Context'
+
 import './styles.scss'
 
 const Phonebook = () => {
-  const [persons, setPersons] = useState([])
+  // const [persons, setPersons] = useState([])
   const [newSearch, setNewSearch] = useState('')
   const [filteredData, setFilteredData] = useState([])
   const [match, setMatch] = useState(true)
   const [empty, setEmpty] = useState(false)
 
-  useEffect(() => {
-    phonebookService
-      .getAll()
-      .then(initialPersons => setPersons(initialPersons))
-      .catch(err => console.error('Error =>', err))
-  }, [])
+  const persons = useContext(Context.Consumer)
+  // useEffect(() => {
+  //   setPersons(state)
+  // }, [state])
+
+  // useEffect(() => {
+  //   phonebookService
+  //     .getAll()
+  //     .then(initialPersons => setPersons(initialPersons))
+  //     .catch(err => console.error('Error =>', err))
+  // }, [])
 
   const deletePerson = (id, person) => {
-    const deletedPerson = { ...person, deleted: true }
+    // const deletedPerson = { ...person, deleted: true }
 
-    phonebookService
-      .deleteId(id, deletedPerson)
-      .then((newData) => {
-        setPersons(persons.map(person => (person.id !== id ? person : newData)))
-        filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
-      })
-      .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
+    // phonebookService
+    //   .deleteId(id, deletedPerson)
+    //   .then((newData) => {
+    //     setPersons(persons.map(person => (person.id !== id ? person : newData)))
+    //     filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
+    //   })
+    //   .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
+    console.log(id, person)
   }
 
   const handleDelete = (id) => {
@@ -92,7 +100,7 @@ const Phonebook = () => {
               deleteId={id => handleDelete(id)}
             />
             )
-          : <Numbers persons={persons} deleteId={id => handleDelete(id)} />
+          : persons && <Numbers persons={persons} deleteId={id => handleDelete(id)} />
       }
     </div>
   )
