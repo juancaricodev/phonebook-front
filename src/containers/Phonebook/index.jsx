@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import Numbers from './components/Numbers'
 import NumbersFiltered from './components/NumbersFiltered'
 import SearchBar from './components/SearchBar'
-import phonebookService from '@services/phonebook'
+// import phonebookService from '@services/phonebook'
 
 import { DataContext } from '@context/DataContext'
 
