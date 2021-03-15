@@ -16,10 +16,7 @@ const Phonebook = () => {
   const [match, setMatch] = useState(true)
   const [empty, setEmpty] = useState(false)
 
-  const persons = useContext(DataContext)
-  // useEffect(() => {
-  //   setPersons(state)
-  // }, [state])
+  const { persons, setPersons } = useContext(DataContext)
 
   // useEffect(() => {
   //   phonebookService
