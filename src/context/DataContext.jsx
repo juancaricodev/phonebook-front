@@ -53,8 +53,20 @@ export const DataContextProvider = ({ children }) => {
       .catch(err => console.error('Error =>', err))
   }, [])
 
+  const deletePerson = (id, person) => {
+    const deletedPerson = { ...person, deleted: true }
+
+    phonebookService
+      .deleteId(id, deletedPerson)
+      .then((newData) => {
+        setPersons(persons.map(person => (person.id !== id ? person : newData)))
+        // filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
+      })
+      .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
+  }
+
   return (
-    <DataContext.Provider value={{ persons, setPersons }}>
+    <DataContext.Provider value={{ persons, deletePerson }}>
       {children}
     </DataContext.Provider>
   )

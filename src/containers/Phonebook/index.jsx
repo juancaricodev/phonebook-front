@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import Numbers from './components/Numbers'
 import NumbersFiltered from './components/NumbersFiltered'
 import SearchBar from './components/SearchBar'
-// import phonebookService from '@services/phonebook'
+import phonebookService from '@services/phonebook'
 
 import { DataContext } from '@context/DataContext'
 
@@ -16,7 +16,7 @@ const Phonebook = () => {
   const [match, setMatch] = useState(true)
   const [empty, setEmpty] = useState(false)
 
-  const { persons, setPersons } = useContext(DataContext)
+  const { persons, deletePerson } = useContext(DataContext)
 
   // useEffect(() => {
   //   phonebookService
@@ -25,23 +25,29 @@ const Phonebook = () => {
   //     .catch(err => console.error('Error =>', err))
   // }, [])
 
-  const deletePerson = (id, person) => {
-    // const deletedPerson = { ...person, deleted: true }
+  // const deletePerson = (id, person) => {
+  //   const deletedPerson = { ...person, deleted: true }
 
-    // phonebookService
-    //   .deleteId(id, deletedPerson)
-    //   .then((newData) => {
-    //     setPersons(persons.map(person => (person.id !== id ? person : newData)))
-    //     filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
-    //   })
-    //   .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
-    console.log(id, person)
-  }
+  //   phonebookService
+  //     .deleteId(id, deletedPerson)
+  //     .then((newData) => {
+  //       setPersons(persons.map(person => (person.id !== id ? person : newData)))
+  //       filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
+  //     })
+  //     .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
+  //   // console.log(id, person)
+  // }
 
   const handleDelete = (id) => {
     const person = persons.find(p => p.id === id)
 
-    window.confirm(`Delete ${person.name}?`) && deletePerson(id, person)
+    window.confirm(`Delete ${person.name}?`) &&
+      Promise.resolve(deletePerson(id, person))
+        .then((newData) => {
+          // setPersons(persons.map(person => (person.id !== id ? person : newData)))
+          filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
+        })
+        // .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
   }
 
   const handleSearchSubmit = (e) => {
