@@ -14,6 +14,12 @@ export const DataContextProvider = ({ children }) => {
       .catch(err => console.error('Error =>', err))
   }, [])
 
+  const createPerson = (newPerson) => {
+    phonebookService
+      .create(newPerson)
+      .then(newPerson => setPersons([...persons, newPerson]))
+  }
+
   const deletePerson = (id, person) => {
     const deletedPerson = { ...person, deleted: true }
 
@@ -27,8 +33,21 @@ export const DataContextProvider = ({ children }) => {
     return deletedPerson
   }
 
+  const updateNumber = (personObject, newNumber) => {
+    const personId = personObject.id
+
+    const updatedPerson = { ...personObject, number: newNumber }
+
+    phonebookService
+      .updateNumber(personId, updatedPerson)
+      .then((updated) => {
+        setPersons(persons.map(person => (person.id !== personId ? person : updated)))
+      })
+      .catch(err => console.error(`Error updating person ${updatedPerson.name} with error => ${err}`))
+  }
+
   return (
-    <DataContext.Provider value={{ persons, deletePerson }}>
+    <DataContext.Provider value={{ persons, createPerson, deletePerson, updateNumber }}>
       {children}
     </DataContext.Provider>
   )
