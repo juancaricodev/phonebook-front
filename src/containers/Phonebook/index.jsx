@@ -1,35 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 import Numbers from './components/Numbers'
 import NumbersFiltered from './components/NumbersFiltered'
 import SearchBar from './components/SearchBar'
-import phonebookService from '@services/phonebook'
 
 import { DataContext } from '@context/DataContext'
 
 import './styles.scss'
 
 const Phonebook = () => {
-  // const [persons, setPersons] = useState([])
   const [newSearch, setNewSearch] = useState('')
   const [filteredData, setFilteredData] = useState([])
   const [match, setMatch] = useState(true)
   const [empty, setEmpty] = useState(false)
 
   const { persons, deletePerson } = useContext(DataContext)
-
-  // const deletePerson = (id, person) => {
-  //   const deletedPerson = { ...person, deleted: true }
-
-  //   phonebookService
-  //     .deleteId(id, deletedPerson)
-  //     .then((newData) => {
-  //       setPersons(persons.map(person => (person.id !== id ? person : newData)))
-  //       filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
-  //     })
-  //     .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
-  //   // console.log(id, person)
-  // }
 
   const handleDelete = (id) => {
     const person = persons.find(p => p.id === id)
@@ -38,13 +23,6 @@ const Phonebook = () => {
       Promise.resolve(deletePerson(id, person))
         .then(newData => filteredData.length > 0 &&
           setFilteredData(filteredData.map(person => (person.id !== id ? person : newData))))
-
-    // Promise.resolve(deletePerson(id, person))
-    //   .then((newData) => {
-    //     // setPersons(persons.map(person => (person.id !== id ? person : newData)))
-    //     filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
-    //   })
-    //   // .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
   }
 
   const handleSearchSubmit = (e) => {
