@@ -1,42 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 
 import Numbers from './components/Numbers'
 import NumbersFiltered from './components/NumbersFiltered'
 import SearchBar from './components/SearchBar'
-import phonebookService from '@services/phonebook'
+
+import { DataContext } from '@context/DataContext'
 
 import './styles.scss'
 
 const Phonebook = () => {
-  const [persons, setPersons] = useState([])
   const [newSearch, setNewSearch] = useState('')
   const [filteredData, setFilteredData] = useState([])
   const [match, setMatch] = useState(true)
   const [empty, setEmpty] = useState(false)
 
-  useEffect(() => {
-    phonebookService
-      .getAll()
-      .then(initialPersons => setPersons(initialPersons))
-      .catch(err => console.error('Error =>', err))
-  }, [])
-
-  const deletePerson = (id, person) => {
-    const deletedPerson = { ...person, deleted: true }
-
-    phonebookService
-      .deleteId(id, deletedPerson)
-      .then((newData) => {
-        setPersons(persons.map(person => (person.id !== id ? person : newData)))
-        filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
-      })
-      .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
-  }
+  const { persons, deletePerson } = useContext(DataContext)
 
   const handleDelete = (id) => {
     const person = persons.find(p => p.id === id)
 
-    window.confirm(`Delete ${person.name}?`) && deletePerson(id, person)
+    window.confirm(`Delete ${person.name}?`) &&
+      Promise.resolve(deletePerson(id, person))
+        .then(newData => filteredData.length > 0 &&
+          setFilteredData(filteredData.map(person => (person.id !== id ? person : newData))))
   }
 
   const handleSearchSubmit = (e) => {
@@ -92,7 +78,7 @@ const Phonebook = () => {
               deleteId={id => handleDelete(id)}
             />
             )
-          : <Numbers persons={persons} deleteId={id => handleDelete(id)} />
+          : persons && <Numbers persons={persons} deleteId={id => handleDelete(id)} />
       }
     </div>
   )
