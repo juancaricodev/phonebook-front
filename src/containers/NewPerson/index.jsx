@@ -1,33 +1,36 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 
-import phonebookService from '@services/phonebook'
+// import phonebookService from '@services/phonebook'
+import { DataContext } from '@context/DataContext'
 
 import './styles.scss'
 
 const NewPerson = () => {
-  const [persons, setPersons] = useState([])
+  // const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
 
-  useEffect(() => {
-    phonebookService
-      .getAll()
-      .then(initialPersons => setPersons(initialPersons))
-      .catch(err => console.error('Error =>', err))
-  }, [])
+  const { persons, updateNumber, createPerson } = useContext(DataContext)
 
-  const updateNumber = (personObject, newNumber) => {
-    const personId = personObject.id
+  // useEffect(() => {
+  //   phonebookService
+  //     .getAll()
+  //     .then(initialPersons => setPersons(initialPersons))
+  //     .catch(err => console.error('Error =>', err))
+  // }, [])
 
-    const updatedPerson = { ...personObject, number: newNumber }
+  // const updateNumber = (personObject, newNumber) => {
+  //   const personId = personObject.id
 
-    phonebookService
-      .updateNumber(personId, updatedPerson)
-      .then((updated) => {
-        setPersons(persons.map(person => (person.id !== personId ? person : updated)))
-      })
-      .catch(err => console.error(`Error updating person ${updatedPerson.name} with error => ${err}`))
-  }
+  //   const updatedPerson = { ...personObject, number: newNumber }
+
+  //   phonebookService
+  //     .updateNumber(personId, updatedPerson)
+  //     .then((updated) => {
+  //       setPersons(persons.map(person => (person.id !== personId ? person : updated)))
+  //     })
+  //     .catch(err => console.error(`Error updating person ${updatedPerson.name} with error => ${err}`))
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -49,10 +52,10 @@ const NewPerson = () => {
           .then(window.alert(`${newPerson.name}'s number updated`))
       )
     } else {
-      phonebookService
-        .create(newPerson)
-        .then(newPerson => setPersons([...persons, newPerson]))
-
+      // phonebookService
+      //   .create(newPerson)
+      //   .then(newPerson => setPersons([...persons, newPerson]))
+      createPerson(newPerson)
       window.alert(`${newPerson.name} has been created`)
     }
 
