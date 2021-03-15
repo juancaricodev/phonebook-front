@@ -5,7 +5,7 @@ import NumbersFiltered from './components/NumbersFiltered'
 import SearchBar from './components/SearchBar'
 import phonebookService from '@services/phonebook'
 
-import Context from '@context/Context'
+import { DataContext } from '@context/Context'
 
 import './styles.scss'
 
@@ -16,7 +16,7 @@ const Phonebook = () => {
   const [match, setMatch] = useState(true)
   const [empty, setEmpty] = useState(false)
 
-  const persons = useContext(Context.Consumer)
+  const persons = useContext(DataContext)
   // useEffect(() => {
   //   setPersons(state)
   // }, [state])
