@@ -5,7 +5,7 @@ import NumbersFiltered from './components/NumbersFiltered'
 import SearchBar from './components/SearchBar'
 import phonebookService from '@services/phonebook'
 
-import { DataContext } from '@context/Context'
+import { DataContext } from '@context/DataContext'
 
 import './styles.scss'
 
