@@ -18,6 +18,7 @@ export const DataContextProvider = ({ children }) => {
     phonebookService
       .create(newPerson)
       .then(newPerson => setPersons([...persons, newPerson]))
+      .catch(err => console.log(`Error creating a new person => ${err}`))
   }
 
   const deletePerson = (id, person) => {
