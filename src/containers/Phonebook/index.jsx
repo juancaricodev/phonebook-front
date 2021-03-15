@@ -18,13 +18,6 @@ const Phonebook = () => {
 
   const { persons, deletePerson } = useContext(DataContext)
 
-  // useEffect(() => {
-  //   phonebookService
-  //     .getAll()
-  //     .then(initialPersons => setPersons(initialPersons))
-  //     .catch(err => console.error('Error =>', err))
-  // }, [])
-
   // const deletePerson = (id, person) => {
   //   const deletedPerson = { ...person, deleted: true }
 
@@ -43,11 +36,15 @@ const Phonebook = () => {
 
     window.confirm(`Delete ${person.name}?`) &&
       Promise.resolve(deletePerson(id, person))
-        .then((newData) => {
-          // setPersons(persons.map(person => (person.id !== id ? person : newData)))
-          filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
-        })
-        // .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
+        .then(newData => filteredData.length > 0 &&
+          setFilteredData(filteredData.map(person => (person.id !== id ? person : newData))))
+
+    // Promise.resolve(deletePerson(id, person))
+    //   .then((newData) => {
+    //     // setPersons(persons.map(person => (person.id !== id ? person : newData)))
+    //     filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
+    //   })
+    //   // .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
   }
 
   const handleSearchSubmit = (e) => {

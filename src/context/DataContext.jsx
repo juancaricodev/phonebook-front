@@ -63,6 +63,8 @@ export const DataContextProvider = ({ children }) => {
         // filteredData.length > 0 && setFilteredData(filteredData.map(person => (person.id !== id ? person : newData)))
       })
       .catch(err => console.log(`Error deleting person with id ${id} => ${err}`))
+
+    return deletedPerson
   }
 
   return (
