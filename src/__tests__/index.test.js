@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 import Layout from '../layouts/Layout/index.jsx'
 import { mount } from 'enzyme'
 

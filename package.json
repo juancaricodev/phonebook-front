@@ -28,6 +28,7 @@
     "@babel/preset-env": "7.13.10",
     "@babel/preset-react": "7.12.13",
     "@wojtekmaj/enzyme-adapter-react-17": "0.4.1",
+    "babel-jest": "26.6.3",
     "babel-loader": "8.2.2",
     "css-loader": "5.1.2",
     "enzyme": "3.11.0",
@@ -56,6 +57,9 @@
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/setup-tests.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|less|scss)$": "babel-jest"
+    }
   }
 }
