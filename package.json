@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --mode development",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "React",
@@ -54,7 +55,7 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "./setup-tests.js"
+      "<rootDir>/setup-tests.js"
     ]
   }
 }
