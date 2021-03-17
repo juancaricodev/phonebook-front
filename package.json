@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack serve --mode development"
+    "start": "webpack serve --mode development",
+    "test": "jest"
   },
   "keywords": [
     "React",
@@ -29,6 +30,7 @@
     "css-loader": "5.1.2",
     "html-loader": "2.1.2",
     "html-webpack-plugin": "5.3.1",
+    "jest": "26.6.3",
     "mini-css-extract-plugin": "1.3.9",
     "node-sass": "5.0.0",
     "sass-loader": "11.0.1",
@@ -37,10 +39,11 @@
     "webpack-cli": "4.5.0",
     "webpack-dev-server": "3.11.2"
   },
-  "eslintConfig": {
+  "standard": {
     "globals": {
       "fetch": false
     },
+    "env": [ "jest" ],
     "extends": [
       "./node_modules/standard/eslintrc.json"
     ]
