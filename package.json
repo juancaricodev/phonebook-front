@@ -51,5 +51,10 @@
     "extends": [
       "./node_modules/standard/eslintrc.json"
     ]
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./setup-tests.js"
+    ]
   }
 }
