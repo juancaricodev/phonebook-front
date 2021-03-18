@@ -2,9 +2,9 @@ import React from 'react'
 import Home from "@containers/Home"
 import { mount } from "enzyme"
 
-const home = mount(<Home />)
-
 describe('<Home />', () => {
+  const home = mount(<Home />)
+
   test('Home render', () => {
     const findHome = home.find('.home')
     expect(findHome.length).toEqual(1)
