@@ -55,6 +55,7 @@
     ]
   },
   "jest": {
+    "verbose": true,
     "setupFilesAfterEnv": [
       "<rootDir>/setup-tests.js"
     ],
