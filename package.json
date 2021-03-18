@@ -60,7 +60,14 @@
       "<rootDir>/setup-tests.js"
     ],
     "moduleNameMapper": {
-      "^.+\\.(css|less|scss)$": "babel-jest"
+      "^.+\\.(css|less|scss)$": "babel-jest",
+      "^@layouts(.*)$": "<rootDir>/src/layouts$1",
+      "^@components(.*)$": "<rootDir>/src/components$1",
+      "^@containers(.*)$": "<rootDir>/src/containers$1",
+      "^@routes(.*)$": "<rootDir>/src/routes$1",
+      "^@services(.*)$": "<rootDir>/src/services$1",
+      "^@context(.*)$": "<rootDir>/src/context$1",
+      "^@styles(.*)$": "<rootDir>/src/assets/style$1"
     }
   }
 }
