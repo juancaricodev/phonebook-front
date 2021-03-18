@@ -8,7 +8,6 @@ describe('<Home />', () => {
   test('Home render', () => {
     const findHome = home.find('.home')
     expect(findHome.length).toEqual(1)
-    expect(findHome.text()).toBe('I\'m Home')
   })
 
   test('Home title render', () => {
@@ -19,6 +18,6 @@ describe('<Home />', () => {
   })
 
   test('Home description render', () => {
-    expect(home.find('.home-description').length)toEqual(1)
+    expect(home.find('.home-description').length).toEqual(1)
   })
 })
