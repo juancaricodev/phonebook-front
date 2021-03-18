@@ -13,4 +13,15 @@ describe('<NotFound />', () => {
   test('NotFound render', () => {
     expect(notFound.find('.not-found').length).toEqual(1)
   })
+
+  test('NotFound title render', () => {
+    expect(notFound.find('.not-found__title').length).toEqual(1)
+  })
+
+  test('Link to Home page', () => {
+    const link = notFound.find(Link)
+
+    expect(link.prop('to')).toBe('/')
+    expect(link.text()).toBe('Home Page')
+  })
 })
