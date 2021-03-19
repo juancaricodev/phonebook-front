@@ -15,4 +15,13 @@ describe('<NewPerson />', () => {
     expect(title.length).toEqual(1)
     expect(title.text().toLowerCase()).toMatch(/add/)
   })
+
+  test('Inputs for name and phone', () => {
+    const input = newPerson.find('input')
+    const inputs = input.map(i => i.prop('placeholder'))
+
+    expect(input.length).toEqual(2)
+    expect(inputs.find(i => i === 'Name'))
+    expect(inputs.find(i => i === 'Phone'))
+  })
 })
