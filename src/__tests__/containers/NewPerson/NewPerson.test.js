@@ -1,6 +1,7 @@
 import React from 'react'
 import NewPerson from '@containers/NewPerson'
 import { mount } from 'enzyme'
+import { createHtmlTagObject } from 'html-webpack-plugin'
 
 describe('<NewPerson />', () => {
   const newPerson = mount(<NewPerson />)
@@ -23,5 +24,12 @@ describe('<NewPerson />', () => {
     expect(input.length).toEqual(2)
     expect(inputs.find(i => i === 'Name'))
     expect(inputs.find(i => i === 'Phone'))
+  })
+
+  test('Button render', () => {
+    const button = newPerson.find('button')
+
+    expect(button.length).toEqual(1)
+    expect(button.text()).toBe('Add')
   })
 })
