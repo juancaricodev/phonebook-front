@@ -1,7 +1,6 @@
 import React from 'react'
 import NewPerson from '@containers/NewPerson'
 import { mount } from 'enzyme'
-import { createHtmlTagObject } from 'html-webpack-plugin'
 
 describe('<NewPerson />', () => {
   const newPerson = mount(<NewPerson />)
