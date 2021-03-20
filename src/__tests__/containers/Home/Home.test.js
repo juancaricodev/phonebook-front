@@ -1,6 +1,6 @@
 import React from 'react'
-import Home from "@containers/Home"
-import { mount } from "enzyme"
+import Home from '@containers/Home'
+import { mount } from 'enzyme'
 
 describe('<Home />', () => {
   const home = mount(<Home />)
