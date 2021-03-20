@@ -4,7 +4,7 @@ import SearchBar from '@containers/Phonebook/components/SearchBar'
 import NumbersFiltered from '@containers/Phonebook/components/NumbersFiltered'
 import Numbers from '@containers/Phonebook/components/Numbers'
 import { mount } from 'enzyme'
-import { personsMock } from '@tests/__mocks__/personsMock'
+// import { personsMock } from '@tests/__mocks__/personsMock'
 
 describe('<Phonebook />', () => {
   const phoneBook = mount(<Phonebook />)
@@ -55,7 +55,7 @@ describe('<Phonebook />', () => {
     ]
     const numbers = mount(<Numbers persons={persons} />)
 
-    expect(numbers.find('h3')).toBe('Numbers')
-    expect(numbers.find('il').children()).to.have.lengthOf(persons.length)
+    expect(numbers.find('h3').text()).toBe('Numbers')
+    expect(numbers.find('ul').children()).toHaveLength(persons.length)
   })
 })
