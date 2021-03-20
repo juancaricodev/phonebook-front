@@ -3,7 +3,7 @@ import Phonebook from '@containers/Phonebook'
 import SearchBar from '@containers/Phonebook/components/SearchBar'
 import NumbersFiltered from '@containers/Phonebook/components/NumbersFiltered'
 import Numbers from '@containers/Phonebook/components/Numbers'
-import { mount, shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { personsMock } from '@tests/__mocks__/personsMock'
 
 describe('<Phonebook />', () => {
@@ -33,9 +33,29 @@ describe('<Phonebook />', () => {
   })
 
   test('<Numbers />', () => {
-    const persons = personsMock
-    const numbers = phoneBook.find(Numbers)
+    const persons = [
+      {
+        name: 'Arto Hellas',
+        number: '040-123456',
+        id: 1,
+        deleted: false
+      },
+      {
+        name: 'Ada Lovelace',
+        number: '39-44-5323523',
+        id: 2,
+        deleted: false
+      },
+      {
+        name: 'Dan Abramov',
+        number: '12-43-234345',
+        id: 3,
+        deleted: false
+      }
+    ]
+    const numbers = mount(<Numbers persons={persons} />)
 
-    expect(numbers.length).toEqual(1)
+    expect(numbers.find('h3')).toBe('Numbers')
+    expect(numbers.find('il').children()).to.have.lengthOf(persons.length)
   })
 })

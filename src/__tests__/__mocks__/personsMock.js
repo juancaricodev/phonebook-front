@@ -1,5 +1,5 @@
-export const personsMock = () => (
-  [
+export const personsMock = () => {
+  return [
     {
       name: 'Arto Hellas',
       number: '040-123456',
@@ -19,4 +19,4 @@ export const personsMock = () => (
       deleted: false
     }
   ]
-)
+}
