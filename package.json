@@ -48,7 +48,10 @@
     "extends": [
       "./node_modules/standard/eslintrc.json"
     ],
-    "env": ["jest"]
+    "env": {
+      "jest": true,
+      "node": true
+    }
   },
   "standard": {
     "globals": {
