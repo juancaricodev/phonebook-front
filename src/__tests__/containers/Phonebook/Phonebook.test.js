@@ -33,8 +33,8 @@ describe('<Phonebook />', () => {
   })
 
   test('<Numbers />', () => {
-    // const persons = personsMock
-    const numbers = shallow(Numbers)
+    const persons = personsMock
+    const numbers = phoneBook.find(Numbers)
 
     expect(numbers.length).toEqual(1)
   })
