@@ -18,7 +18,8 @@ module.exports = {
       '@routes': path.resolve(__dirname, 'src/routes'),
       '@services': path.resolve(__dirname, 'src/services'),
       '@context': path.resolve(__dirname, 'src/context'),
-      '@styles': path.resolve(__dirname, 'src/assets/styles')
+      '@styles': path.resolve(__dirname, 'src/assets/styles'),
+      '@tests': path.resolve(__dirname, 'src/assets/styles')
     }
   },
   module: {
