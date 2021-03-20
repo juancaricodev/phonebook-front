@@ -44,15 +44,17 @@
     "webpack-cli": "4.5.0",
     "webpack-dev-server": "3.11.2"
   },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
+  },
   "standard": {
     "globals": {
       "fetch": false
     },
     "env": [
       "jest"
-    ],
-    "extends": [
-      "./node_modules/standard/eslintrc.json"
     ]
   },
   "jest": {
