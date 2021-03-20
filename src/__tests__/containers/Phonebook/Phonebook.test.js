@@ -3,7 +3,8 @@ import Phonebook from '@containers/Phonebook'
 import SearchBar from '@containers/Phonebook/components/SearchBar'
 import NumbersFiltered from '@containers/Phonebook/components/NumbersFiltered'
 import Numbers from '@containers/Phonebook/components/Numbers'
-import { mount } from "enzyme"
+import { mount, shallow } from 'enzyme'
+import { personsMock } from '@tests/__mocks__/personsMock'
 
 describe('<Phonebook />', () => {
   const phoneBook = mount(<Phonebook />)
@@ -32,7 +33,8 @@ describe('<Phonebook />', () => {
   })
 
   test('<Numbers />', () => {
-    const numbers = phoneBook.find(Numbers)
+    // const persons = personsMock
+    const numbers = shallow(Numbers)
 
     expect(numbers.length).toEqual(1)
   })
