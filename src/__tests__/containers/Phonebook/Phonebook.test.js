@@ -4,7 +4,6 @@ import SearchBar from '@containers/Phonebook/components/SearchBar'
 import NumbersFiltered from '@containers/Phonebook/components/NumbersFiltered'
 import Numbers from '@containers/Phonebook/components/Numbers'
 import { mount } from 'enzyme'
-// import { personsMock } from '@tests/__mocks__/personsMock'
 
 describe('<Phonebook />', () => {
   const phoneBook = mount(<Phonebook />)
@@ -27,9 +26,18 @@ describe('<Phonebook />', () => {
   })
 
   test('<NumbersFiltered />', () => {
-    const numbersFiltered = phoneBook.find(NumbersFiltered)
+    const filteredData = [
+      {
+        name: 'Arto Hellas',
+        number: '040-123456',
+        id: 1,
+        deleted: false
+      }
+    ]
+    const numbersFiltered = mount(<NumbersFiltered filteredData={filteredData} />)
 
-    expect(numbersFiltered.length).toEqual(1)
+    expect(numbersFiltered.find('h3').text().toLowerCase()).toMatch(/filtered/)
+    expect(numbersFiltered.find('ul').children('li')).toHaveLength(filteredData.length)
   })
 
   test('<Numbers />', () => {
@@ -56,6 +64,6 @@ describe('<Phonebook />', () => {
     const numbers = mount(<Numbers persons={persons} />)
 
     expect(numbers.find('h3').text()).toBe('Numbers')
-    expect(numbers.find('ul').children()).toHaveLength(persons.length)
+    expect(numbers.find('ul').children('li')).toHaveLength(persons.length)
   })
 })
