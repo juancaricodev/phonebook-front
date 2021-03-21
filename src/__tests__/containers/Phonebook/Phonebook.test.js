@@ -25,6 +25,10 @@ describe('<Phonebook />', () => {
     test('Container render', () => {
       expect(searchBar.length).toEqual(1)
     })
+
+    test('Input render', () => {
+      expect(searchBar.find('input').prop('placeholder')).toBe('Search by name')
+    })
   })
 
   describe('<NumbersFiltered />', () => {
