@@ -19,10 +19,12 @@ describe('<Phonebook />', () => {
     expect(title.text()).toBe('Phonebook')
   })
 
-  test('<SearchBar />', () => {
+  describe('<SearchBar />', () => {
     const searchBar = phoneBook.find(SearchBar)
 
-    expect(searchBar.length).toEqual(1)
+    test('Container render', () => {
+      expect(searchBar.length).toEqual(1)
+    })
   })
 
   describe('<NumbersFiltered />', () => {
