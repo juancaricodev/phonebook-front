@@ -10,12 +10,17 @@
 ```sh
 yarn install
 ```
+## Start
 
+```sh
+yarn start
+```
 ## Stack
 * React
 * Webpack
 * React Router
 * SCSS
+* Jest
 
 ## Author
 
