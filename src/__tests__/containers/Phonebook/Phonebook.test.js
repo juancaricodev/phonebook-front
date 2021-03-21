@@ -25,7 +25,7 @@ describe('<Phonebook />', () => {
     expect(searchBar.length).toEqual(1)
   })
 
-  test('<NumbersFiltered />', () => {
+  describe('<NumbersFiltered />', () => {
     const filteredData = [
       {
         name: 'Arto Hellas',
@@ -36,8 +36,13 @@ describe('<Phonebook />', () => {
     ]
     const numbersFiltered = mount(<NumbersFiltered filteredData={filteredData} />)
 
-    expect(numbersFiltered.find('h3').text().toLowerCase()).toMatch(/filtered/)
-    expect(numbersFiltered.find('ul').children('li')).toHaveLength(filteredData.length)
+    test('Title render', () => {
+      expect(numbersFiltered.find('h3').text().toLowerCase()).toMatch(/filtered/)
+    })
+
+    test('li render according to data quantity', () => {
+      expect(numbersFiltered.find('ul').children('li')).toHaveLength(filteredData.length)
+    })
   })
 
   describe('<Numbers />', () => {
