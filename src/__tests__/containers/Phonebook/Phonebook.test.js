@@ -29,6 +29,14 @@ describe('<Phonebook />', () => {
     test('Input render', () => {
       expect(searchBar.find('input').prop('placeholder')).toBe('Search by name')
     })
+
+    test('Button render', () => {
+      const button = searchBar.find('button')
+
+      expect(button.length).toEqual(1)
+      expect(button.prop('type')).toBe('submit')
+      expect(button.text()).toBe('Search')
+    })
   })
 
   describe('<NumbersFiltered />', () => {
