@@ -61,7 +61,13 @@ describe('<Phonebook />', () => {
         deleted: false
       }
     ]
-    const numbers = mount(<Numbers persons={persons} />)
+    const deleteId = jest.fn()
+    const numbers = mount(
+      <Numbers
+        persons={persons}
+        deleteId={deleteId}
+      />
+    )
 
     test('Title render', () => {
       expect(numbers.find('h3').text()).toBe('Numbers')
@@ -77,6 +83,8 @@ describe('<Phonebook />', () => {
       expect(deleteBtn).toHaveLength(persons.length)
       deleteBtn.forEach(node => {
         expect(node.text()).toBe('Delete')
+        node.simulate('click')
+        expect(deleteId.mock.calls.length).toBe(1)
       })
     })
   })
