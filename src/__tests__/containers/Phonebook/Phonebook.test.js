@@ -40,7 +40,7 @@ describe('<Phonebook />', () => {
     expect(numbersFiltered.find('ul').children('li')).toHaveLength(filteredData.length)
   })
 
-  test('<Numbers />', () => {
+  describe('<Numbers />', () => {
     const persons = [
       {
         name: 'Arto Hellas',
@@ -63,7 +63,12 @@ describe('<Phonebook />', () => {
     ]
     const numbers = mount(<Numbers persons={persons} />)
 
-    expect(numbers.find('h3').text()).toBe('Numbers')
-    expect(numbers.find('ul').children('li')).toHaveLength(persons.length)
+    test('Title render', () => {
+      expect(numbers.find('h3').text()).toBe('Numbers')
+    })
+
+    test('li rendered according to persons quantity', () => {
+      expect(numbers.find('ul').children('li')).toHaveLength(persons.length)
+    })
   })
 })
