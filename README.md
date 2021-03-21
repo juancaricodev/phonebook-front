@@ -11,6 +11,12 @@
 yarn install
 ```
 
+## Stack
+* React
+* Webpack
+* React Router
+* SCSS
+
 ## Author
 
 👤 **Juan Camilo Rico <juancaricodev@gmail.com>**
