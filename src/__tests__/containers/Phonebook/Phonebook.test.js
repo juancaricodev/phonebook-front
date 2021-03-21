@@ -70,5 +70,14 @@ describe('<Phonebook />', () => {
     test('li rendered according to persons quantity', () => {
       expect(numbers.find('ul').children('li')).toHaveLength(persons.length)
     })
+
+    test('Delete button in each li', () => {
+      const deleteBtn = numbers.find('ul').children('li').children('button')
+
+      expect(deleteBtn).toHaveLength(persons.length)
+      deleteBtn.forEach(node => {
+        expect(node.text()).toBe('Delete')
+      })
+    })
   })
 })
