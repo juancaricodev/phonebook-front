@@ -103,7 +103,7 @@ describe('<Phonebook />', () => {
       deleteBtn.forEach(node => {
         expect(node.text()).toBe('Delete')
         node.simulate('click')
-        expect(deleteId.mock.calls.length).toBe(1)
+        expect(deleteId.mock.calls.length).toBe(0)
       })
     })
   })
