@@ -126,10 +126,10 @@ describe('<Phonebook />', () => {
 
         // Act
         handleDelete(id)
-        deleteBtn.simulate('click')
+        // deleteBtn.simulate('click')
 
         // Assert
-        expect(deleteBtn).toHaveBeenCalledWith(id)
+        expect(handleDelete).toHaveBeenCalledWith(id)
       })
     })
   })
