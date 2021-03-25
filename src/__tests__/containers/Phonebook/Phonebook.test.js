@@ -80,11 +80,11 @@ describe('<Phonebook />', () => {
         deleted: false
       }
     ]
-    const deleteId = jest.fn()
+    const handleDelete = jest.fn()
     const numbers = mount(
       <Numbers
         persons={persons}
-        deleteId={deleteId}
+        deleteId={handleDelete}
       />
     )
 
@@ -96,14 +96,40 @@ describe('<Phonebook />', () => {
       expect(numbers.find('ul').children('li')).toHaveLength(persons.length)
     })
 
-    test('Delete button in each li', () => {
+    describe('delete button', () => {
+      // Arrange
       const deleteBtn = numbers.find('ul').children('li').children('button')
 
-      expect(deleteBtn).toHaveLength(persons.length)
-      deleteBtn.forEach(node => {
-        expect(node.text()).toBe('Delete')
-        node.simulate('click')
-        expect(deleteId.mock.calls.length).toBe(0)
+      // expect(deleteBtn).toHaveLength(persons.length)
+      // deleteBtn.forEach(node => {
+      //   expect(node.text()).toBe('Delete')
+      //   node.simulate('click')
+      //   expect(deleteId.mock.calls.length).toBe(0)
+      // })
+
+      test('delete button in each li', () => {
+        // Arrange
+
+        // Act
+
+        // Assert
+        expect(deleteBtn).toHaveLength(persons.length)
+        deleteBtn.forEach(node => {
+          expect(node.text()).toBe('Delete')
+        })
+      })
+
+      test('handleDelete', () => {
+        // Arrange
+        const id = 1
+        // const deleteBtn = numbers.find('ul').children('li').children('button')
+
+        // Act
+        handleDelete(id)
+        deleteBtn.simulate('click')
+
+        // Assert
+        expect(deleteBtn).toHaveBeenCalledWith(id)
       })
     })
   })
