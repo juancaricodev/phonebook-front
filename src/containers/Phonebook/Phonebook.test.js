@@ -2,7 +2,7 @@ import React from 'react'
 import Phonebook from '@containers/Phonebook'
 import SearchBar from '@containers/Phonebook/components/SearchBar'
 import NumbersFiltered from '@containers/Phonebook/components/NumbersFiltered'
-import Numbers from '@containers/Phonebook/components/Numbers'
+// import Numbers from '@containers/Phonebook/components/Numbers'
 import { mount } from 'enzyme'
 
 describe('<Phonebook />', () => {
