@@ -1,3 +1,7 @@
+import React from 'react'
+import NumbersFiltered from '@containers/Phonebook/components/NumbersFiltered'
+import { mount } from 'enzyme'
+
 describe('<NumbersFiltered />', () => {
   const filteredData = [
     {
