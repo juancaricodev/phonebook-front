@@ -2,9 +2,8 @@ import React from 'react'
 import { mount } from 'enzyme'
 import SearchBar from '@containers/Phonebook/components/SearchBar'
 
-
 describe('<SearchBar />', () => {
-  const searchBar = phoneBook.find(SearchBar)
+  const searchBar = mount(<SearchBar />)
 
   test('Container render', () => {
     expect(searchBar.length).toEqual(1)
